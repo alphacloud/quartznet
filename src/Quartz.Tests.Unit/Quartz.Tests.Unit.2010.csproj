@@ -114,6 +114,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CalendarIntervalTriggerTest.cs" />
+    <Compile Include="ConfigurationBuilderTest.cs" />
     <Compile Include="Core\ListenerManagerTest .cs" />
     <Compile Include="Core\MissSchedulingChangeSignalTest.cs" />
     <Compile Include="CronScheduleBuilderTest.cs" />
