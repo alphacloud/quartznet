@@ -9,6 +9,7 @@ namespace Quartz.Tests.Unit
     [TestFixture]
     public class ConfigurationBuilderTest
     {
+        // ReSharper disable InconsistentNaming
         [SetUp]
         public void SetUp()
         {
@@ -19,13 +20,13 @@ namespace Quartz.Tests.Unit
 
         [Test]
         public void WithBatchTimeWindow_Should_SpecifyTimeInMilliseconds()
+
         {
-            var cfg = builder.WithBatchTimeWindow(TimeSpan.FromMilliseconds(500))
-                .Build();
+            var cfg = builder.WithSchedulerConfiguration(scheduler => scheduler.BatchTimeWindow(TimeSpan.FromMilliseconds(500))).Build();
 
             Assert.AreEqual("500", cfg[StdSchedulerFactory.PropertySchedulerBatchTimeWindow]);
         }
 
-
+        // ReSharper restore InconsistentNaming
     }
 }
