@@ -89,9 +89,9 @@ namespace Quartz
             configuration[propName] = value;
         }
 
-        internal void SetType<T>(string propetyName) where T : class
+        internal void SetType<T>(string propertyName) where T : class
         {
-            configuration[propetyName] = GetTypeName(typeof (T));
+            configuration[propertyName] = GetTypeName(typeof (T));
         }
     }
 
@@ -101,9 +101,7 @@ namespace Quartz
 
         ISchedulerConfigurationBuilder InstanceId(string instanceId);
 
-        ISchedulerConfigurationBuilder WithInstanceIdGeneratorPreperties(NameValueCollection properties);
-
-        ISchedulerConfigurationBuilder WithInstanceIdGenerator<TInstanceIdGenerator>()
+        ISchedulerConfigurationBuilder WithInstanceIdGenerator<TInstanceIdGenerator>(IEnumerable<KeyValuePair<string, string>> properties)
             where TInstanceIdGenerator : class, IInstanceIdGenerator;
 
         ISchedulerConfigurationBuilder ThreadName(string threadName);
@@ -164,12 +162,7 @@ namespace Quartz
             return this;
         }
 
-        public ISchedulerConfigurationBuilder WithInstanceIdGeneratorPreperties(NameValueCollection properties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ISchedulerConfigurationBuilder WithInstanceIdGenerator<TInstanceIdGenerator>()
+        public ISchedulerConfigurationBuilder WithInstanceIdGenerator<TInstanceIdGenerator>(IEnumerable<KeyValuePair<string, string>> properties)
             where TInstanceIdGenerator : class, IInstanceIdGenerator
         {
             builder.SetType<TInstanceIdGenerator>(StdSchedulerFactory.PropertySchedulerInstanceIdGeneratorType);
